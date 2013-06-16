@@ -1,0 +1,9 @@
+/** Exclusive-or
+    out = a xor b
+*/
+CHIP Xor {
+    IN a, b;
+    OUT out;
+
+    // TODO
+}
