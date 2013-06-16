@@ -1,0 +1,19 @@
+/** FullAdder
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    {sum,carry} = a+b+c,overflow;
+*/
+
+CHIP FullAdder {
+    IN a, b, c;
+    OUT sum, carry;
+
+    PARTS:
+    Xor(a=a, b=b, out=axorb);
+    Xor(a=axorb, b=c, out=sum);
+
+    And(a=c, b=axorb, out=c1);
+    And(a=a, b=b, out=aandb);
+    Xor(a=c1, b=aandb, out=carry);
+}
