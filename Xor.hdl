@@ -6,15 +6,8 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    Nand(a=a, b=a, out=nota);
-    Nand(a=b, b=b, out=notb);
-    Nand(a=nota, b=notb, out=eitherone);
-
     Nand(a=a, b=b, out=nandab);
-    Nand(a=nandab, b=nandab, out=both);
-
-    Nand(a=both, b=both, out=notboth);
-
-    Nand(a=eitherone, b=notboth, out=nandenb);
-    Nand(a=nandenb, b=nandenb, out=out);
+    Nand(a=a, b=nandab, out=i1);
+    Nand(a=nandab, b=b, out=i2);
+    Nand(a=i1, b=i2, out=out);
 }
