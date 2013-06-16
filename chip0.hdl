@@ -5,5 +5,5 @@ CHIP Xor {
     IN a, b;
     OUT out;
 
-    // TODO
+    // TODO out = (a or b) and (not(a and b))
 }
