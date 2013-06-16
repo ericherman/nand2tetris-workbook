@@ -1,0 +1,30 @@
+/** 16 input And gate
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    out = (in[0] OR in[1] OR in[2] OR ... in[15]);
+*/
+
+CHIP AndGate16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    And(a=in[0], b=in[1], out=o01);
+    And(a=in[2], b=in[3], out=o23);
+    And(a=in[4], b=in[5], out=o45);
+    And(a=in[6], b=in[7], out=o67);
+    And(a=in[8], b=in[9], out=o89);
+    And(a=in[10], b=in[11], out=o1011);
+    And(a=in[12], b=in[13], out=o1213);
+    And(a=in[14], b=in[15], out=o1415);
+
+    And(a=o01, b=o23, out=o0123);
+    And(a=o45, b=o67, out=o4567);
+    And(a=o89, b=o1011, out=o891011);
+    And(a=o1213, b=o1415, out=o12131415);
+
+    And(a=o0123, b=o4567, out=olsb);
+    And(a=o891011, b=o12131415, out=omsb);
+    And(a=olsb, b=omsb, out=out);
+}
