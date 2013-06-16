@@ -1,0 +1,56 @@
+/** Arithmatic Logic Unit
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    IN  x[16], y[16],
+        zx, // zero x
+        nx, // negate x
+        zy, // zero y
+        ny, // negate y
+        f,  // ADD or AND function
+        no; // negate output
+
+    OUT out[16],
+        zr, // output was zero
+        ng, // output was negative
+*/
+
+CHIP ALU {
+    IN  x[16], y[16],
+        zx, // zero x
+        nx, // negate x
+        zy, // zero y
+        ny, // negate y
+        f,  // ADD or AND function
+        no; // negate output
+
+    OUT out[16],
+        zr, // output was zero
+        ng, // output was negative
+        overflow;
+
+    PARTS:
+
+    Mux16(a=x, b[0..15]=false, sel=zx, out=zxout);
+    Mux16(a=y, b[0..15]=false, sel=zy, out=zyout);
+    Not16(in=zxout, out=notxout);
+    Not16(in=zyout, out=notyout);
+    Mux16(a=zxout, b=notxout, sel=nx, out=xin);
+    Mux16(a=zyout, b=notyout, sel=ny, out=yin);
+
+    Add16(a=xin, b=yin, out=addout, overflow=addoverflow);
+    And16(a=xin, b=yin, out=andout);
+
+    Mux16(a=andout, b=addout, sel=f, out=fout);
+    Mux(a=false, b=addoverflow, sel=f, out=overflow);
+
+    Not16(in=fout, out=notfout);
+    Mux16(a=fout, b=notfout, sel=no, out=output);
+
+    OrGate16(in=output, out=nz);
+    Not(in=nz, out=zr);
+    Or16(a[0..14]=true, a[15]=false, b=output, out=or16out);
+    AndGate16(in=or16out, out=ng);
+
+    And16(a=output, b[0..15]=true, out=out);
+}
