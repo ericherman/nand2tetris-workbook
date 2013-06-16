@@ -1,0 +1,30 @@
+/** 4-way Multiplexor
+    out = a if sel==00
+          b if sel==01
+          c if sel==10
+          d if sel==11
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+*/
+
+CHIP Mux4Way {
+    IN a, b, c, d, sel[2];
+    OUT out;
+
+    PARTS:
+    Not(in=sel[0], out=notsel0);
+    Not(in=sel[1], out=notsel1);
+    And(a=notsel0, b=notsel1, out=sel00);
+    And(a=notsel0, b=sel[1], out=sel10);
+    And(a=sel[0], b=notsel1, out=sel01);
+    And(a=sel[0], b=sel[1], out=sel11);
+
+    And(a=sel00, b=a, out=sell00anda);
+    And(a=sel01, b=b, out=sell01andb);
+    And(a=sel10, b=c, out=sell10andc);
+    And(a=sel11, b=d, out=sell11andd);
+    Or(a=sell00anda, b=sell01andb, out=selandab);
+    Or(a=sell10andc, b=sell11andd, out=selandcd);
+    Or(a=selandab, b=selandcd, out=out);
+}
