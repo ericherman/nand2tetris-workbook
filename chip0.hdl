@@ -5,5 +5,9 @@ CHIP Xor {
     IN a, b;
     OUT out;
 
-    // TODO out = (a or b) and (not(a and b))
+    PARTS:
+    Or(a=a, b=b, out=either_one);
+    And(a=a, b=b, out=both);
+    Not(in=both, out=not_both);
+    And(a=either_one, b=not_both, out=out);
 }
