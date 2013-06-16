@@ -1,5 +1,8 @@
 /** Exclusive-not-or
     out = not(a xor b)
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
 */
 CHIP Xnor {
     IN a, b;

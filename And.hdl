@@ -1,5 +1,8 @@
 /** And
     out = a and b
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
 */
 CHIP And {
     IN a, b;

@@ -1,5 +1,8 @@
 /** Exclusive-or
     out = a xor b
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
 */
 CHIP Xor {
     IN a, b;
