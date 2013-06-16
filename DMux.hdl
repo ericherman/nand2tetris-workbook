@@ -1,0 +1,16 @@
+/** Demultiplexor
+    {a,b} = (sel) ? {0,in} : {in,0};
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+*/
+
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=notsel, b=in, out=a);
+    And(a=sel, b=in, out=b);
+}
