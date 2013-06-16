@@ -1,0 +1,14 @@
+/** 16-bit Increment
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    {out,overflow} = in + 1;
+*/
+
+CHIP Inc16 {
+    IN in[16];
+    OUT out[16], overflow;
+
+    PARTS:
+    Add16(a=in, b[0]=true, out=out, overflow=overflow);
+}
