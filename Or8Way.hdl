@@ -1,0 +1,20 @@
+/** 8 input Or gate
+    out = in[0] or in[1] or ... or in[7]
+
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+*/
+
+CHIP Or8Way {
+    IN in[8];
+    OUT out;
+
+    PARTS:
+    Or(a=in[0], b=in[1], out=aorb1);
+    Or(a=in[2], b=in[3], out=aorb2);
+    Or(a=in[4], b=in[5], out=aorb3);
+    Or(a=in[6], b=in[7], out=aorb4);
+    Or(a=aorb1, b=aorb2, out=comb1);
+    Or(a=aorb2, b=aorb3, out=comb2);
+    Or(a=comb1, b=comb2, out=out);
+}
