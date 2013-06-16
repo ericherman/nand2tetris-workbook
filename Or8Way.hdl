@@ -1,8 +1,8 @@
 /** 8 input Or gate
-    out = in[0] or in[1] or ... or in[7]
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    out = in[0] or in[1] or ... or in[7]
 */
 
 CHIP Or8Way {

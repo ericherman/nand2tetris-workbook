@@ -1,8 +1,8 @@
 /** Demultiplexor
-    {a,b} = (sel) ? {0,in} : {in,0};
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    {a,b} = (sel) ? {0,in} : {in,0};
 */
 
 CHIP DMux {

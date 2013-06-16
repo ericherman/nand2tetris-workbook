@@ -1,11 +1,11 @@
 /** 4-way demultiplexor
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
     {a,b,c,d} = {in,0,0,0} if sel==00
                 {0,in,0,0} if sel==01
                 {0,0,in,0} if sel==10
                 {0,0,0,in} if sel==11
-
-    Copyright (C) 2013 Eric Herman
-    License: GNU General Public License v3 or any later version
 */
 
 CHIP DMux4Way {

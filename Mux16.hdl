@@ -1,8 +1,8 @@
 /** 16 bit Multiplexor
-    for i = 0..15: out[i] = (sel==1) ? b[i] : a[i]
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    for i = 0..15: out[i] = (sel==1) ? b[i] : a[i]
 */
 
 CHIP Mux16 {

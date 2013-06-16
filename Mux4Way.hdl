@@ -1,11 +1,11 @@
 /** 4-way Multiplexor
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
     out = a if sel==00
           b if sel==01
           c if sel==10
           d if sel==11
-
-    Copyright (C) 2013 Eric Herman
-    License: GNU General Public License v3 or any later version
 */
 
 CHIP Mux4Way {

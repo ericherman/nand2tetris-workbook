@@ -1,8 +1,8 @@
 /** Or
-    out = a or b
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    out = a or b
 */
 CHIP Or {
     IN a, b;

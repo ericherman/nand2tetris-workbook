@@ -1,8 +1,8 @@
 /** 16-bit And gate
-    for i = 0..15: out[i] = a[i] and b[i]
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    for i = 0..15: out[i] = a[i] and b[i]
 */
 
 CHIP And16 {

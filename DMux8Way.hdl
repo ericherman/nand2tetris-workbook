@@ -1,4 +1,7 @@
 /** 4-way demultiplexor
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
     {a,b,c,d,e,f,g,h} = {in,0,0,0,0,0,0,0} if sel==000
                         {0,in,0,0,0,0,0,0} if sel==001
                         {0,0,in,0,0,0,0,0} if sel==010
@@ -7,9 +10,6 @@
                         {0,0,0,0,0,in,0,0} if sel==101
                         {0,0,0,0,0,0,in,0} if sel==110
                         {0,0,0,0,0,0,0,in} if sel==111
-
-    Copyright (C) 2013 Eric Herman
-    License: GNU General Public License v3 or any later version
 */
 
 CHIP DMux8Way {

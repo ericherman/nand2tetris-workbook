@@ -1,8 +1,8 @@
 /** 16-bit OR gate
-    for i = 0..15: out[i] = a[i] or b[i]
-
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    for i = 0..15: out[i] = a[i] or b[i]
 */
 
 CHIP Or16 {

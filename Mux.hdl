@@ -1,9 +1,8 @@
-/**
-    Multiplexor
-    out = (sel==1) ? b : a
-
+/** Multiplexor
     Copyright (C) 2013 Eric Herman
     License: GNU General Public License v3 or any later version
+
+    out = (sel==1) ? b : a
 */
 
 CHIP Mux {
