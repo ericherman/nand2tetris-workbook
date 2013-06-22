@@ -1,0 +1,33 @@
+/** 8 Words of Memory
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    out(t) = mem(addr) at t-1;
+    if load(t–1) then mem(addr) = in
+*/
+
+
+CHIP RAM8 {
+    IN in[16], load, address[3];
+    OUT out[16];
+
+    PARTS:
+    DMux8Way(in=load, sel=address,
+        a=load000, b=load001, c=load010, d=load011,
+        e=load100, f=load101, g=load110, h=load111);
+
+    Register(in=in, load=load000, out=reg000);
+    Register(in=in, load=load001, out=reg001);
+    Register(in=in, load=load010, out=reg010);
+    Register(in=in, load=load011, out=reg011);
+    Register(in=in, load=load100, out=reg100);
+    Register(in=in, load=load101, out=reg101);
+    Register(in=in, load=load110, out=reg110);
+    Register(in=in, load=load111, out=reg111);
+
+    Mux8Way16(
+       a=reg000, b=reg001, c=reg010, d=reg011,
+       e=reg100, f=reg101, g=reg110, h=reg111,
+       sel=address, out=out);
+
+}
