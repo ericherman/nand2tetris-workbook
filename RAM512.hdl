@@ -1,0 +1,31 @@
+/** 64 Words of Memory
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    out(t) = mem(addr) at t-1;
+    if load(t–1) then mem(addr) = in
+*/
+
+CHIP RAM512 {
+    IN in[16], load, address[9];
+    OUT out[16];
+
+    PARTS:
+    DMux8Way(in=load, sel=address[0..2],
+        a=load000, b=load001, c=load010, d=load011,
+        e=load100, f=load101, g=load110, h=load111);
+
+    RAM64(in=in, load=load000, address=address[3..8], out=ram000);
+    RAM64(in=in, load=load001, address=address[3..8], out=ram001);
+    RAM64(in=in, load=load010, address=address[3..8], out=ram010);
+    RAM64(in=in, load=load011, address=address[3..8], out=ram011);
+    RAM64(in=in, load=load100, address=address[3..8], out=ram100);
+    RAM64(in=in, load=load101, address=address[3..8], out=ram101);
+    RAM64(in=in, load=load110, address=address[3..8], out=ram110);
+    RAM64(in=in, load=load111, address=address[3..8], out=ram111);
+
+    Mux8Way16(
+       a=ram000, b=ram001, c=ram010, d=ram011,
+       e=ram100, f=ram101, g=ram110, h=ram111,
+       sel=address[0..2], out=out);
+}
