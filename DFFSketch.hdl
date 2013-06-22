@@ -1,0 +1,17 @@
+/** Data Flip-Flop
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    Computer says, "No."
+    "This chip has a circle in its parts connections"
+*/
+CHIP DFFSketch {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // CLOCKED b;
+    Nor(a=a, b=norb, out=nora);
+    Nor(a=b, b=nora, out=norb);
+    And(a=true, b=nora, out=out);
+}
