@@ -14,7 +14,7 @@
 
 CHIP DMux8Way {
     IN in, sel[3];
-    OUT a, b, c, d;
+    OUT a, b, c, d, e, f, g, h;
 
     PARTS:
     Not(in=sel[0], out=notsel0);
