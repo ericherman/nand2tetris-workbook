@@ -6,12 +6,17 @@
     "This chip has a circle in its parts connections"
 */
 CHIP DFFSketch {
-    IN a, b;
+    IN in, clock;
     OUT out;
 
     PARTS:
-    // CLOCKED b;
+
+    // CLOCKED in, out;
+
+    Nand(a=in, b=in, out=nandin);
+    Nand(a=in, b=clk, out=a);
+    Nand(a=clock, b=nandin, out=b);
     Nor(a=a, b=norb, out=nora);
     Nor(a=b, b=nora, out=norb);
-    And(a=true, b=nora, out=out);
+    Or(a=false, b=nora, out=out);
 }
