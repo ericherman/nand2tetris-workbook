@@ -3,7 +3,8 @@
 // License: GNU General Public License v3 or any later version
 
 // RAM[2] = RAM[0] * RAM[1]
-// after, value in RAM[1] will be set to zero
+// RAM[3] is used as a temporay variable
+// after, value in RAM[3] will be set to zero
 
 @2
 M=0      // zero results register RAM[2]
@@ -11,12 +12,16 @@ M=0      // zero results register RAM[2]
 D=M
 @end
 D;JEQ    // if RAM[0] is zero, we're done
+@1
+D=M
+@3       // remaining iterations in register RAM[3]
+M=D
 (begin)
-  @1     // remaining iterations register RAM[1]
+  @3     // remaining iterations register RAM[1]
   D=M
   @end
   D;JEQ  // if remaining iterations is zero, we're done
-  @1
+  @3
   M=M-1  // decrement remaining iterations
   @0     // get base value
   D=M
