@@ -1,0 +1,24 @@
+/** 16K Words of Memory
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    out(t) = mem(addr) at t-1;
+    if load(t–1) then mem(addr) = in
+*/
+CHIP RAM16K {
+    IN in[16], load, address[14];
+    OUT out[16];
+
+    PARTS:
+    DMux4Way(in=load, sel=address[0..1],
+        a=load000, b=load001, c=load010, d=load011);
+
+    RAM4K(in=in, load=load000, address=address[2..13], out=ram000);
+    RAM4K(in=in, load=load001, address=address[2..13], out=ram001);
+    RAM4K(in=in, load=load010, address=address[2..13], out=ram010);
+    RAM4K(in=in, load=load011, address=address[2..13], out=ram011);
+
+    Mux4Way16(
+       a=ram000, b=ram001, c=ram010, d=ram011,
+       sel=address[0..1], out=out);
+}
