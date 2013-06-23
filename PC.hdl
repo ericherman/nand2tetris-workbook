@@ -1,0 +1,23 @@
+/** 16bit counter
+    Copyright (C) 2013 Eric Herman
+    License: GNU General Public License v3 or any later version
+
+    if (reset), out=0
+    else if (load) out=load
+    else if (inc) out=PC+1
+    else no change
+*/
+CHIP PC {
+    IN in[16],load,inc,reset;
+    OUT out[16];
+
+    PARTS:
+    Inc16(in=regout, out=incremented);
+    Mux16(a=regout, b=incremented, sel=inc, out=incout);
+    Mux16(a=incout, b=in, sel=load, out=loadout);
+    Mux16(a=loadout, b[0..15]=false, sel=reset, out=regin);
+
+    Register(in=regin, load=true, out=regout);
+
+    And16(a[0..15]=true, b=regout, out=out);
+}
